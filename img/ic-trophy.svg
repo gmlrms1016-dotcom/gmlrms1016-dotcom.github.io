@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Base shadow -->
+  <ellipse cx="40" cy="76" rx="16" ry="3" fill="#1d1d1f" opacity="0.12"/>
+  <!-- Base plate -->
+  <rect x="22" y="68" width="36" height="7" rx="3.5" fill="#1d1d1f"/>
+  <!-- Stem -->
+  <rect x="34" y="58" width="12" height="12" rx="2" fill="#3a3a3c"/>
+  <!-- Cup handles left -->
+  <path d="M18 28 Q8 28 8 38 Q8 48 18 48" fill="none" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
+  <!-- Cup handles right -->
+  <path d="M62 28 Q72 28 72 38 Q72 48 62 48" fill="none" stroke="#1d1d1f" stroke-width="5" stroke-linecap="round"/>
+  <!-- Cup body -->
+  <path d="M18 14 L62 14 L58 58 L22 58 Z" fill="#1d1d1f"/>
+  <!-- Cup rim detail -->
+  <rect x="18" y="14" width="44" height="6" rx="3" fill="#3a3a3c"/>
+  <!-- Cup body highlight -->
+  <path d="M24 22 L30 56 L28 56 L22 22 Z" fill="white" opacity="0.06"/>
+  <!-- Inner cup bowl shape -->
+  <path d="M22 20 Q40 50 58 20" fill="none" stroke="#3a3a3c" stroke-width="1.5"/>
+  <!-- Star in cup -->
+  <path d="M40 24 L42.4 31.2 L50 31.2 L43.8 35.6 L46.2 42.8 L40 38.4 L33.8 42.8 L36.2 35.6 L30 31.2 L37.6 31.2 Z" fill="#aeaeb2"/>
+  <!-- Star highlight -->
+  <path d="M40 24 L41.2 28 L45 28 L42 30 L43 34 L40 32 L37 34 L38 30 L35 28 L38.8 28 Z" fill="white" opacity="0.3"/>
+  <!-- Handles inner -->
+  <path d="M18 32 Q12 32 12 38 Q12 44 18 44" fill="none" stroke="#3a3a3c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M62 32 Q68 32 68 38 Q68 44 62 44" fill="none" stroke="#3a3a3c" stroke-width="2" stroke-linecap="round"/>
+</svg>

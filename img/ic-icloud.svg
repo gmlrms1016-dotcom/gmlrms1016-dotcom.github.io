@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Cloud shadow -->
+  <path d="M20 54 Q12 54 12 46 Q12 38 20 37 Q20 26 30 24 Q36 18 46 22 Q54 18 60 24 Q70 24 70 34 Q76 36 76 44 Q76 54 66 54 Z" fill="#1d1d1f" opacity="0.08" transform="translate(0 3)"/>
+  <!-- Cloud body -->
+  <path d="M20 52 Q10 52 10 42 Q10 32 20 31 Q20 18 32 16 Q40 10 50 16 Q58 10 64 18 Q74 18 74 30 Q80 33 80 42 Q80 52 68 52 Z" fill="#1d1d1f"/>
+  <!-- Cloud highlight top-left -->
+  <path d="M20 31 Q20 18 32 16 Q35 15 38 15.5 Q28 19 28 31 Q22 31 20 31 Z" fill="white" opacity="0.1"/>
+  <!-- Cloud inner (lighter center) -->
+  <path d="M22 50 Q13 50 13 42 Q13 35 22 34 Q22 23 33 21 Q40 16 49 21 Q56 17 62 23 Q71 23 71 33 Q76 35 76 42 Q76 50 66 50 Z" fill="#3a3a3c"/>
+  <!-- Apple logo on cloud -->
+  <!-- Apple leaf -->
+  <path d="M44 22 Q46 18 48 20 Q46 22 44 22 Z" fill="white" opacity="0.7"/>
+  <!-- Apple body -->
+  <path d="M36 28 Q36 24 40 24 Q42 24 43 25 Q44 24 46 24 Q50 24 50 28 Q54 28 54 34 Q54 42 50 44 Q48 44 46 42 Q44 44 42 44 Q38 44 36 42 Q32 42 32 34 Q32 28 36 28 Z" fill="white" opacity="0.85"/>
+  <!-- Apple bite -->
+  <circle cx="50" cy="27" r="5" fill="#3a3a3c"/>
+</svg>
