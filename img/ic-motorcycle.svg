@@ -1,44 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <radialGradient id="tireGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#4a4a4e"/>
+      <stop offset="100%" stop-color="#1a1a1c"/>
+    </radialGradient>
+    <linearGradient id="tankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9500"/>
+      <stop offset="100%" stop-color="#E06000"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9500"/>
+      <stop offset="100%" stop-color="#FF6B00"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6e6e73"/>
+      <stop offset="100%" stop-color="#48484a"/>
+    </linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.3"/></filter>
+  </defs>
   <!-- Road -->
-  <rect x="0" y="62" width="80" height="18" fill="#e5e5ea"/>
+  <rect x="0" y="64" width="80" height="16" fill="url(#roadGrad)"/>
+  <line x1="10" y1="72" x2="22" y2="72" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="6,4" opacity="0.5"/>
+  <line x1="36" y1="72" x2="48" y2="72" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="6,4" opacity="0.5"/>
   <!-- Shadow -->
-  <ellipse cx="40" cy="65" rx="28" ry="3" fill="#1d1d1f" opacity="0.12"/>
+  <ellipse cx="40" cy="65" rx="28" ry="2.5" fill="#000" opacity="0.2"/>
   <!-- Rear wheel -->
-  <circle cx="18" cy="58" r="14" fill="#1d1d1f"/>
-  <circle cx="18" cy="58" r="9" fill="#3a3a3c"/>
-  <circle cx="18" cy="58" r="4" fill="#1d1d1f"/>
-  <circle cx="18" cy="58" r="2" fill="#aeaeb2"/>
-  <!-- Spokes -->
-  <line x1="18" y1="49" x2="18" y2="67" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="9" y1="58" x2="27" y2="58" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="11.5" y1="51.5" x2="24.5" y2="64.5" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="24.5" y1="51.5" x2="11.5" y2="64.5" stroke="#6e6e73" stroke-width="1"/>
+  <circle cx="18" cy="58" r="13" fill="url(#tireGrad)" filter="url(#s)"/>
+  <circle cx="18" cy="58" r="9"  fill="#3a3a3c"/>
+  <circle cx="18" cy="58" r="4"  fill="#1a1a1c"/>
+  <circle cx="18" cy="58" r="2"  fill="#c8c8cc"/>
+  <!-- Rear spokes (orange accent) -->
+  <line x1="18" y1="45" x2="18" y2="71" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="5"  y1="58" x2="31" y2="58" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="9"  y1="49" x2="27" y2="67" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="27" y1="49" x2="9"  y2="67" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
   <!-- Front wheel -->
-  <circle cx="62" cy="58" r="14" fill="#1d1d1f"/>
-  <circle cx="62" cy="58" r="9" fill="#3a3a3c"/>
-  <circle cx="62" cy="58" r="4" fill="#1d1d1f"/>
-  <circle cx="62" cy="58" r="2" fill="#aeaeb2"/>
-  <!-- Spokes -->
-  <line x1="62" y1="49" x2="62" y2="67" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="53" y1="58" x2="71" y2="58" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="55.5" y1="51.5" x2="68.5" y2="64.5" stroke="#6e6e73" stroke-width="1"/>
-  <line x1="68.5" y1="51.5" x2="55.5" y2="64.5" stroke="#6e6e73" stroke-width="1"/>
+  <circle cx="62" cy="58" r="13" fill="url(#tireGrad)" filter="url(#s)"/>
+  <circle cx="62" cy="58" r="9"  fill="#3a3a3c"/>
+  <circle cx="62" cy="58" r="4"  fill="#1a1a1c"/>
+  <circle cx="62" cy="58" r="2"  fill="#c8c8cc"/>
+  <!-- Front spokes -->
+  <line x1="62" y1="45" x2="62" y2="71" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="49" y1="58" x2="75" y2="58" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="53" y1="49" x2="71" y2="67" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
+  <line x1="71" y1="49" x2="53" y2="67" stroke="#FF9500" stroke-width="1" opacity="0.7"/>
   <!-- Frame/chassis -->
-  <path d="M18 58 L28 42 L40 38 L54 44 L62 58" fill="none" stroke="#1d1d1f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 56 L28 41 L40 37 L54 43 L62 56" fill="none" stroke="#2a2a2c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Orange accent stripe on frame -->
+  <path d="M28 41 L40 37 L54 43" fill="none" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
   <!-- Engine block -->
-  <rect x="28" y="46" width="18" height="12" rx="3" fill="#3a3a3c"/>
+  <rect x="28" y="46" width="18" height="11" rx="3" fill="#3a3a3c"/>
+  <rect x="30" y="48" width="6"  height="7"  rx="1.5" fill="#555"/>
+  <rect x="38" y="48" width="6"  height="7"  rx="1.5" fill="#555"/>
   <!-- Fuel tank -->
-  <ellipse cx="40" cy="38" rx="10" ry="6" fill="#1d1d1f"/>
+  <ellipse cx="40" cy="37" rx="11" ry="6" fill="url(#tankGrad)"/>
+  <!-- Tank shine -->
+  <ellipse cx="37" cy="35" rx="4" ry="1.8" fill="white" opacity="0.22"/>
+  <!-- Tank logo line -->
+  <line x1="34" y1="37" x2="46" y2="37" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
   <!-- Seat -->
-  <rect x="26" y="36" width="18" height="5" rx="2.5" fill="#3a3a3c"/>
+  <rect x="25" y="34" width="20" height="5" rx="2.5" fill="#222224"/>
+  <!-- Seat padding detail -->
+  <rect x="27" y="35" width="16" height="2" rx="1" fill="#3a3a3c"/>
   <!-- Handlebars -->
-  <path d="M54 44 L60 38 L66 36" fill="none" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round"/>
-  <!-- Rider position indicators -->
-  <circle cx="38" cy="30" r="4" fill="#6e6e73"/>
-  <path d="M34 30 L30 42" stroke="#6e6e73" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M42 30 L50 36" stroke="#6e6e73" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Headlight -->
-  <ellipse cx="67" cy="50" rx="4" ry="3" fill="#d1d1d6"/>
-  <!-- Exhaust -->
-  <path d="M20 58 L10 60 Q6 62 8 65" fill="none" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"/>
+  <path d="M54 43 L61 37 L67 35" fill="none" stroke="#2a2a2c" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="65" y="33" width="5" height="4" rx="2" fill="#3a3a3c"/>
+  <!-- Headlight (amber glow) -->
+  <ellipse cx="68" cy="50" rx="4.5" ry="3.5" fill="#fffde0"/>
+  <ellipse cx="68" cy="50" rx="4.5" ry="3.5" fill="none" stroke="#FF9500" stroke-width="1"/>
+  <!-- Headlight beam -->
+  <path d="M72 48 L77 45 M72 50 L77 50 M72 52 L77 55" stroke="#fffde0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Exhaust pipe -->
+  <path d="M18 58 L9 61 Q5 63 7 66" fill="none" stroke="#8a8a8e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Exhaust tip -->
+  <ellipse cx="7" cy="66" rx="2" ry="1.5" fill="#6e6e73"/>
+  <!-- Windscreen -->
+  <path d="M56 38 Q60 32 65 30 L63 34 Q59 35 56 40 Z" fill="#b8d4f0" opacity="0.5"/>
 </svg>

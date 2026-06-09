@@ -1,51 +1,81 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
-  <!-- Circuit board background -->
-  <rect x="6" y="6" width="68" height="68" rx="8" fill="#f5f5f7"/>
-  <rect x="6" y="6" width="68" height="68" rx="8" fill="none" stroke="#e5e5ea" stroke-width="1.5"/>
-  <!-- Circuit traces horizontal -->
-  <line x1="6" y1="22" x2="24" y2="22" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="56" y1="22" x2="74" y2="22" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="6" y1="58" x2="24" y2="58" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="56" y1="58" x2="74" y2="58" stroke="#d1d1d6" stroke-width="1.5"/>
-  <!-- Circuit traces vertical -->
-  <line x1="22" y1="6" x2="22" y2="24" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="58" y1="6" x2="58" y2="24" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="22" y1="56" x2="22" y2="74" stroke="#d1d1d6" stroke-width="1.5"/>
-  <line x1="58" y1="56" x2="58" y2="74" stroke="#d1d1d6" stroke-width="1.5"/>
-  <!-- Corner solder pads -->
-  <circle cx="22" cy="22" r="4" fill="#aeaeb2"/>
-  <circle cx="58" cy="22" r="4" fill="#aeaeb2"/>
-  <circle cx="22" cy="58" r="4" fill="#aeaeb2"/>
-  <circle cx="58" cy="58" r="4" fill="#aeaeb2"/>
-  <!-- Inner traces to center chip -->
-  <line x1="26" y1="22" x2="34" y2="22" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="46" y1="22" x2="54" y2="22" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="26" y1="58" x2="34" y2="58" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="46" y1="58" x2="54" y2="58" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="22" y1="26" x2="22" y2="34" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="22" y1="46" x2="22" y2="54" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="58" y1="26" x2="58" y2="34" stroke="#d1d1d6" stroke-width="1.2"/>
-  <line x1="58" y1="46" x2="58" y2="54" stroke="#d1d1d6" stroke-width="1.2"/>
-  <!-- CPU/Chip body -->
-  <rect x="26" y="26" width="28" height="28" rx="4" fill="#1d1d1f"/>
-  <!-- Chip pins top/bottom -->
-  <rect x="30" y="22" width="3" height="4" rx="1" fill="#6e6e73"/>
-  <rect x="37" y="22" width="3" height="4" rx="1" fill="#6e6e73"/>
-  <rect x="44" y="22" width="3" height="4" rx="1" fill="#6e6e73"/>
-  <rect x="30" y="54" width="3" height="4" rx="1" fill="#6e6e73"/>
-  <rect x="37" y="54" width="3" height="4" rx="1" fill="#6e6e73"/>
-  <rect x="44" y="54" width="3" height="4" rx="1" fill="#6e6e73"/>
+  <defs>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d2b1a"/>
+      <stop offset="100%" stop-color="#061a0f"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a2c"/>
+      <stop offset="100%" stop-color="#111113"/>
+    </linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/></filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- PCB board -->
+  <rect x="5" y="5" width="70" height="70" rx="8" fill="url(#boardGrad)" filter="url(#s)"/>
+  <rect x="5" y="5" width="70" height="70" rx="8" fill="none" stroke="#1a4a2a" stroke-width="1.5"/>
+  <!-- Traces (teal/green) -->
+  <!-- Horizontal traces -->
+  <line x1="5"  y1="22" x2="24" y2="22" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="56" y1="22" x2="75" y2="22" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="5"  y1="58" x2="24" y2="58" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="56" y1="58" x2="75" y2="58" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="5"  y1="40" x2="18" y2="40" stroke="#26C6DA" stroke-width="1.2" opacity="0.6"/>
+  <line x1="62" y1="40" x2="75" y2="40" stroke="#26C6DA" stroke-width="1.2" opacity="0.6"/>
+  <!-- Vertical traces -->
+  <line x1="22" y1="5"  x2="22" y2="24" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="58" y1="5"  x2="58" y2="24" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="22" y1="56" x2="22" y2="75" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="58" y1="56" x2="58" y2="75" stroke="#00BFA5" stroke-width="1.5" opacity="0.8"/>
+  <line x1="40" y1="5"  x2="40" y2="18" stroke="#26C6DA" stroke-width="1.2" opacity="0.6"/>
+  <line x1="40" y1="62" x2="40" y2="75" stroke="#26C6DA" stroke-width="1.2" opacity="0.6"/>
+  <!-- Corner solder pads (gold) -->
+  <circle cx="22" cy="22" r="4.5" fill="#c9a227" filter="url(#glow)"/>
+  <circle cx="58" cy="22" r="4.5" fill="#c9a227" filter="url(#glow)"/>
+  <circle cx="22" cy="58" r="4.5" fill="#c9a227" filter="url(#glow)"/>
+  <circle cx="58" cy="58" r="4.5" fill="#c9a227" filter="url(#glow)"/>
+  <circle cx="22" cy="22" r="2.5" fill="#FFD700"/>
+  <circle cx="58" cy="22" r="2.5" fill="#FFD700"/>
+  <circle cx="22" cy="58" r="2.5" fill="#FFD700"/>
+  <circle cx="58" cy="58" r="2.5" fill="#FFD700"/>
+  <!-- Inner traces to chip -->
+  <line x1="26" y1="22" x2="34" y2="22" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="46" y1="22" x2="54" y2="22" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="26" y1="58" x2="34" y2="58" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="46" y1="58" x2="54" y2="58" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="22" y1="26" x2="22" y2="34" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="22" y1="46" x2="22" y2="54" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="58" y1="26" x2="58" y2="34" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <line x1="58" y1="46" x2="58" y2="54" stroke="#00BFA5" stroke-width="1.2" opacity="0.7"/>
+  <!-- Mid pads -->
+  <circle cx="40" cy="22" r="2.5" fill="#00BFA5" opacity="0.7"/>
+  <circle cx="40" cy="58" r="2.5" fill="#00BFA5" opacity="0.7"/>
+  <circle cx="22" cy="40" r="2.5" fill="#00BFA5" opacity="0.7"/>
+  <circle cx="58" cy="40" r="2.5" fill="#00BFA5" opacity="0.7"/>
+  <!-- Chip body -->
+  <rect x="26" y="26" width="28" height="28" rx="4" fill="url(#chipGrad)"/>
+  <rect x="26" y="26" width="28" height="28" rx="4" fill="none" stroke="#00BFA5" stroke-width="0.8" opacity="0.5"/>
+  <!-- Chip pins (teal) top/bottom -->
+  <rect x="30" y="22" width="3" height="4" rx="1" fill="#00BFA5"/>
+  <rect x="37" y="22" width="3" height="4" rx="1" fill="#26C6DA"/>
+  <rect x="44" y="22" width="3" height="4" rx="1" fill="#00BFA5"/>
+  <rect x="30" y="54" width="3" height="4" rx="1" fill="#00BFA5"/>
+  <rect x="37" y="54" width="3" height="4" rx="1" fill="#26C6DA"/>
+  <rect x="44" y="54" width="3" height="4" rx="1" fill="#00BFA5"/>
   <!-- Chip pins left/right -->
-  <rect x="22" y="30" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <rect x="22" y="37" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <rect x="22" y="44" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <rect x="54" y="30" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <rect x="54" y="37" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <rect x="54" y="44" width="4" height="3" rx="1" fill="#6e6e73"/>
-  <!-- Chip label -->
-  <rect x="30" y="30" width="20" height="20" rx="2" fill="#252527"/>
-  <!-- IT text -->
-  <line x1="36" y1="35" x2="36" y2="45" stroke="white" stroke-width="2" stroke-linecap="round"/>
-  <line x1="34" y1="35" x2="38" y2="35" stroke="white" stroke-width="2" stroke-linecap="round"/>
-  <path d="M40 35 L40 45 L44 45 Q46 45 46 42 Q46 39 44 39 L40 39" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="22" y="30" width="4" height="3" rx="1" fill="#00BFA5"/>
+  <rect x="22" y="37" width="4" height="3" rx="1" fill="#26C6DA"/>
+  <rect x="22" y="44" width="4" height="3" rx="1" fill="#00BFA5"/>
+  <rect x="54" y="30" width="4" height="3" rx="1" fill="#00BFA5"/>
+  <rect x="54" y="37" width="4" height="3" rx="1" fill="#26C6DA"/>
+  <rect x="54" y="44" width="4" height="3" rx="1" fill="#00BFA5"/>
+  <!-- Chip inner label panel -->
+  <rect x="30" y="30" width="20" height="20" rx="2.5" fill="#1a2a1a"/>
+  <!-- IT text (teal glow) -->
+  <line x1="36" y1="35" x2="36" y2="45" stroke="#00BFA5" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)"/>
+  <line x1="33.5" y1="35" x2="38.5" y2="35" stroke="#00BFA5" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M41 35 L41 45 L45 45 Q47.5 45 47.5 41.5 Q47.5 38 45 38 L41 38" fill="none" stroke="#26C6DA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
 </svg>

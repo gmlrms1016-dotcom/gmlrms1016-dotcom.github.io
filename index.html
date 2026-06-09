@@ -160,7 +160,7 @@
 
     .hero-title em {
       font-style: normal;
-      background: linear-gradient(135deg, #1d1d1f 0%, #6e6e73 100%);
+      background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -278,21 +278,63 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-avatar {
-      width: 220px; height: 220px;
-      border-radius: 50%;
-      background: var(--grey-6);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 0 0;
+      gap: 0;
+      align-items: stretch;
+      border-radius: 24px;
       overflow: hidden;
-      border: 3px solid var(--grey-5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
     }
 
-    .about-avatar svg { width: 100px; height: 100px; color: var(--grey-3); }
+    /* ── Left: full-bleed photo panel ── */
+    .about-photo-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+
+    .about-photo-panel .about-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Semi-transparent gradient overlay */
+    .about-photo-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 113, 227, 0.45) 0%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.08) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* ── Right: info panel ── */
+    .about-info-panel {
+      background: var(--white);
+      padding: 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+      }
+      .about-photo-panel {
+        min-height: 320px;
+      }
+      .about-info-panel {
+        padding: 40px 28px;
+      }
+    }
 
     .about-photo {
       width: 100%; height: 100%;
@@ -1220,14 +1262,12 @@
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <!-- Avatar -->
-      <div style="display:flex; justify-content:center;">
-        <div class="about-avatar">
-          <img src="img/photo.jpg" alt="윤희근" class="about-photo">
-        </div>
+      <!-- Left: full-bleed photo -->
+      <div class="about-photo-panel">
+        <img src="img/photo.jpg" alt="윤희근" class="about-photo">
       </div>
-      <!-- Info -->
-      <div>
+      <!-- Right: info panel -->
+      <div class="about-info-panel">
         <p class="section-label">About Me</p>
         <h2 class="about-name">윤희근</h2>
         <p class="about-role">동양미래대학교 컴퓨터소프트웨어공학과 · 재학</p>
@@ -1256,8 +1296,8 @@
             <span>2004년 10월 16일생</span>
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.about-info-panel -->
+    </div><!-- /.about-grid -->
 
     <!-- Stats -->
     <div style="margin-top:60px;">

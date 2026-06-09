@@ -1,89 +1,150 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050510"/>
+      <stop offset="50%" stop-color="#0a0a20"/>
+      <stop offset="100%" stop-color="#0d1428"/>
+    </linearGradient>
+    <radialGradient id="robotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00BFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00BFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FFFF"/>
+      <stop offset="100%" stop-color="#0080FF"/>
+    </radialGradient>
+    <linearGradient id="bodyMetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2840"/>
+      <stop offset="100%" stop-color="#0e1420"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00BFFF"/>
+      <stop offset="100%" stop-color="#7B2FBE"/>
+    </linearGradient>
+    <filter id="cyanGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="softBlur"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+
   <!-- Background -->
-  <rect width="400" height="200" fill="#2a2a2c"/>
+  <rect width="400" height="200" fill="url(#bgGrad)"/>
+
   <!-- Grid lines (circuit board feel) -->
-  <line x1="0" y1="50" x2="400" y2="50" stroke="#333336" stroke-width="1"/>
-  <line x1="0" y1="100" x2="400" y2="100" stroke="#333336" stroke-width="1"/>
-  <line x1="0" y1="150" x2="400" y2="150" stroke="#333336" stroke-width="1"/>
-  <line x1="80" y1="0" x2="80" y2="200" stroke="#333336" stroke-width="1"/>
-  <line x1="160" y1="0" x2="160" y2="200" stroke="#333336" stroke-width="1"/>
-  <line x1="240" y1="0" x2="240" y2="200" stroke="#333336" stroke-width="1"/>
-  <line x1="320" y1="0" x2="320" y2="200" stroke="#333336" stroke-width="1"/>
+  <line x1="0" y1="50" x2="400" y2="50" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="80" y1="0" x2="80" y2="200" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="160" y1="0" x2="160" y2="200" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="240" y1="0" x2="240" y2="200" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
+  <line x1="320" y1="0" x2="320" y2="200" stroke="#00BFFF" stroke-width="0.4" opacity="0.15"/>
 
-  <!-- Neural network nodes (background) -->
-  <!-- Left layer -->
-  <circle cx="40" cy="50" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="40" cy="100" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="40" cy="150" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <!-- Connections left-mid -->
-  <line x1="45" y1="50" x2="115" y2="70" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="45" y1="50" x2="115" y2="100" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="45" y1="100" x2="115" y2="70" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="45" y1="100" x2="115" y2="130" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="45" y1="150" x2="115" y2="100" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="45" y1="150" x2="115" y2="130" stroke="#3a3a3e" stroke-width="1"/>
-  <!-- Right side connections -->
-  <line x1="285" y1="70" x2="360" y2="50" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="285" y1="100" x2="360" y2="100" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="285" y1="130" x2="360" y2="150" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="285" y1="70" x2="360" y2="100" stroke="#3a3a3e" stroke-width="1"/>
-  <line x1="285" y1="130" x2="360" y2="100" stroke="#3a3a3e" stroke-width="1"/>
-  <!-- Mid nodes -->
-  <circle cx="120" cy="70" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="120" cy="100" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="120" cy="130" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="280" cy="70" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="280" cy="100" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="280" cy="130" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <!-- Right layer -->
-  <circle cx="360" cy="50" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="360" cy="100" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
-  <circle cx="360" cy="150" r="5" fill="none" stroke="#4a4a4f" stroke-width="1.5"/>
+  <!-- Neural net - left layer -->
+  <circle cx="38" cy="48" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="38" cy="100" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="38" cy="152" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="38" cy="48" r="3" fill="#00BFFF" opacity="0.4"/>
+  <circle cx="38" cy="100" r="3" fill="#00BFFF" opacity="0.4"/>
+  <circle cx="38" cy="152" r="3" fill="#00BFFF" opacity="0.4"/>
 
-  <!-- Robot head main -->
-  <rect x="148" y="50" width="104" height="90" rx="14" fill="#1d1d1f"/>
-  <!-- Robot head highlight -->
-  <rect x="148" y="50" width="104" height="30" rx="14" fill="#252527"/>
-  <rect x="148" y="72" width="104" height="8" fill="#252527"/>
+  <!-- Neural net - mid left layer -->
+  <circle cx="100" cy="68" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="100" cy="100" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="100" cy="132" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="100" cy="68" r="3" fill="#7B2FBE" opacity="0.5"/>
+  <circle cx="100" cy="100" r="3" fill="#7B2FBE" opacity="0.5"/>
+  <circle cx="100" cy="132" r="3" fill="#7B2FBE" opacity="0.5"/>
+
+  <!-- Neural net - mid right layer -->
+  <circle cx="300" cy="68" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="300" cy="100" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="300" cy="132" r="6" fill="none" stroke="#7B2FBE" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="300" cy="68" r="3" fill="#7B2FBE" opacity="0.5"/>
+  <circle cx="300" cy="100" r="3" fill="#7B2FBE" opacity="0.5"/>
+  <circle cx="300" cy="132" r="3" fill="#7B2FBE" opacity="0.5"/>
+
+  <!-- Neural net - right layer -->
+  <circle cx="362" cy="48" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="362" cy="100" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="362" cy="152" r="6" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <circle cx="362" cy="48" r="3" fill="#00BFFF" opacity="0.4"/>
+  <circle cx="362" cy="100" r="3" fill="#00BFFF" opacity="0.4"/>
+  <circle cx="362" cy="152" r="3" fill="#00BFFF" opacity="0.4"/>
+
+  <!-- Connections left -->
+  <line x1="44" y1="48" x2="94" y2="68" stroke="#00BFFF" stroke-width="0.8" opacity="0.4"/>
+  <line x1="44" y1="48" x2="94" y2="100" stroke="#00BFFF" stroke-width="0.8" opacity="0.3"/>
+  <line x1="44" y1="100" x2="94" y2="68" stroke="#00BFFF" stroke-width="0.8" opacity="0.35"/>
+  <line x1="44" y1="100" x2="94" y2="100" stroke="#00BFFF" stroke-width="1" opacity="0.5" filter="url(#cyanGlow)"/>
+  <line x1="44" y1="100" x2="94" y2="132" stroke="#00BFFF" stroke-width="0.8" opacity="0.3"/>
+  <line x1="44" y1="152" x2="94" y2="100" stroke="#00BFFF" stroke-width="0.8" opacity="0.35"/>
+  <line x1="44" y1="152" x2="94" y2="132" stroke="#00BFFF" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Connections right -->
+  <line x1="306" y1="68" x2="356" y2="48" stroke="#00BFFF" stroke-width="0.8" opacity="0.4"/>
+  <line x1="306" y1="100" x2="356" y2="100" stroke="#00BFFF" stroke-width="1" opacity="0.5" filter="url(#cyanGlow)"/>
+  <line x1="306" y1="132" x2="356" y2="152" stroke="#00BFFF" stroke-width="0.8" opacity="0.4"/>
+  <line x1="306" y1="68" x2="356" y2="100" stroke="#00BFFF" stroke-width="0.8" opacity="0.3"/>
+  <line x1="306" y1="132" x2="356" y2="100" stroke="#00BFFF" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Robot ambient glow -->
+  <ellipse cx="200" cy="100" rx="80" ry="70" fill="url(#robotGlow)"/>
+
+  <!-- Robot body -->
+  <rect x="152" y="60" width="96" height="85" rx="12" fill="url(#bodyMetalGrad)"/>
+  <rect x="152" y="60" width="96" height="85" rx="12" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.6" filter="url(#cyanGlow)"/>
+  <!-- Body top highlight -->
+  <rect x="152" y="60" width="96" height="20" rx="12" fill="#00BFFF" opacity="0.06"/>
+
   <!-- Antenna -->
-  <line x1="200" y1="50" x2="200" y2="32" stroke="#6e6e73" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="200" cy="28" r="5" fill="#3a3a3c"/>
-  <circle cx="200" cy="28" r="2.5" fill="#aeaeb2"/>
-  <!-- Side ear connectors -->
-  <rect x="132" y="82" width="16" height="24" rx="4" fill="#252527"/>
-  <rect x="252" y="82" width="16" height="24" rx="4" fill="#252527"/>
-  <circle cx="140" cy="94" r="4" fill="#3a3a3c"/>
-  <circle cx="260" cy="94" r="4" fill="#3a3a3c"/>
-  <!-- Eyes visor -->
-  <rect x="160" y="72" width="80" height="24" rx="6" fill="#3a3a3c"/>
-  <!-- Left eye glow -->
-  <rect x="166" y="78" width="28" height="12" rx="4" fill="#111113"/>
-  <rect x="170" y="80" width="20" height="8" rx="3" fill="#6e6e73" opacity="0.8"/>
-  <circle cx="180" cy="84" r="3" fill="white" opacity="0.9"/>
-  <circle cx="178" cy="82" r="1.2" fill="white"/>
-  <!-- Right eye glow -->
-  <rect x="206" y="78" width="28" height="12" rx="4" fill="#111113"/>
-  <rect x="210" y="80" width="20" height="8" rx="3" fill="#6e6e73" opacity="0.8"/>
-  <circle cx="220" cy="84" r="3" fill="white" opacity="0.9"/>
-  <circle cx="218" cy="82" r="1.2" fill="white"/>
-  <!-- Mouth panel -->
-  <rect x="168" y="106" width="64" height="16" rx="4" fill="#252527"/>
-  <rect x="172" y="109" width="8" height="10" rx="2" fill="#aeaeb2" opacity="0.4"/>
-  <rect x="184" y="109" width="8" height="10" rx="2" fill="#aeaeb2" opacity="0.7"/>
-  <rect x="196" y="109" width="8" height="10" rx="2" fill="#aeaeb2" opacity="0.4"/>
-  <rect x="208" y="109" width="8" height="10" rx="2" fill="#aeaeb2" opacity="0.7"/>
-  <rect x="220" y="109" width="8" height="10" rx="2" fill="#aeaeb2" opacity="0.4"/>
-  <!-- Chest panel -->
-  <rect x="162" y="136" width="76" height="18" rx="5" fill="#252527"/>
-  <line x1="170" y1="145" x2="190" y2="145" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="210" cy="145" r="4" fill="none" stroke="#6e6e73" stroke-width="1.5"/>
-  <circle cx="222" cy="145" r="3" fill="#3a3a3c"/>
-  <circle cx="222" cy="145" r="1.5" fill="#aeaeb2"/>
+  <line x1="200" y1="60" x2="200" y2="40" stroke="#00BFFF" stroke-width="2.5" stroke-linecap="round" filter="url(#cyanGlow)"/>
+  <circle cx="200" cy="36" r="6" fill="#0a0a20" stroke="#00BFFF" stroke-width="1.5" filter="url(#cyanGlow)"/>
+  <circle cx="200" cy="36" r="3" fill="#00FFFF" opacity="0.9"/>
 
-  <!-- Active connection lines (glowing) -->
-  <line x1="45" y1="100" x2="148" y2="94" stroke="#6e6e73" stroke-width="1.5" opacity="0.7"/>
-  <line x1="252" y1="94" x2="355" y2="100" stroke="#6e6e73" stroke-width="1.5" opacity="0.7"/>
+  <!-- Side ear connectors -->
+  <rect x="134" y="82" width="18" height="22" rx="5" fill="#0e1828" stroke="#00BFFF" stroke-width="1" opacity="0.7"/>
+  <rect x="248" y="82" width="18" height="22" rx="5" fill="#0e1828" stroke="#00BFFF" stroke-width="1" opacity="0.7"/>
+  <circle cx="143" cy="93" r="5" fill="#00BFFF" opacity="0.3"/>
+  <circle cx="257" cy="93" r="5" fill="#00BFFF" opacity="0.3"/>
+
+  <!-- Visor strip -->
+  <rect x="163" y="76" width="74" height="22" rx="6" fill="#040818"/>
+  <rect x="163" y="76" width="74" height="22" rx="6" fill="none" stroke="#00BFFF" stroke-width="1" opacity="0.6"/>
+
+  <!-- Left eye -->
+  <rect x="169" y="80" width="26" height="14" rx="4" fill="#000820"/>
+  <rect x="173" y="82" width="18" height="10" rx="3" fill="url(#eyeGlow)" opacity="0.9" filter="url(#cyanGlow)"/>
+  <circle cx="182" cy="87" r="4" fill="#00FFFF" opacity="0.95"/>
+  <circle cx="180" cy="85" r="1.5" fill="white"/>
+
+  <!-- Right eye -->
+  <rect x="205" y="80" width="26" height="14" rx="4" fill="#000820"/>
+  <rect x="209" y="82" width="18" height="10" rx="3" fill="url(#eyeGlow)" opacity="0.9" filter="url(#cyanGlow)"/>
+  <circle cx="218" cy="87" r="4" fill="#00FFFF" opacity="0.95"/>
+  <circle cx="216" cy="85" r="1.5" fill="white"/>
+
+  <!-- Mouth / speaker grille -->
+  <rect x="170" y="108" width="60" height="16" rx="4" fill="#040818" stroke="#00BFFF" stroke-width="0.8" opacity="0.5"/>
+  <rect x="175" y="111" width="7" height="10" rx="2" fill="#00BFFF" opacity="0.35"/>
+  <rect x="186" y="111" width="7" height="10" rx="2" fill="#7B2FBE" opacity="0.5"/>
+  <rect x="197" y="111" width="7" height="10" rx="2" fill="#00BFFF" opacity="0.35"/>
+  <rect x="208" y="111" width="7" height="10" rx="2" fill="#7B2FBE" opacity="0.5"/>
+  <rect x="219" y="111" width="7" height="10" rx="2" fill="#00BFFF" opacity="0.35"/>
+
+  <!-- Chest panel -->
+  <rect x="163" y="130" width="74" height="18" rx="5" fill="#040818" stroke="#00BFFF" stroke-width="0.8" opacity="0.5"/>
+  <!-- Chest power ring -->
+  <circle cx="185" cy="139" r="7" fill="none" stroke="#00BFFF" stroke-width="1.5" opacity="0.7" filter="url(#cyanGlow)"/>
+  <circle cx="185" cy="139" r="4" fill="#00BFFF" opacity="0.3"/>
+  <circle cx="185" cy="139" r="2" fill="#00FFFF" opacity="0.8"/>
+  <!-- Chest indicators -->
+  <rect x="198" y="134" width="32" height="3" rx="1.5" fill="url(#accentGrad)" opacity="0.7"/>
+  <rect x="198" y="140" width="22" height="3" rx="1.5" fill="#00BFFF" opacity="0.5"/>
+  <rect x="198" y="146" width="28" height="3" rx="1.5" fill="#7B2FBE" opacity="0.5"/>
+
+  <!-- Active data streams (pulses) -->
+  <line x1="106" y1="100" x2="152" y2="100" stroke="url(#accentGrad)" stroke-width="1.5" opacity="0.8" filter="url(#cyanGlow)"/>
+  <line x1="248" y1="100" x2="294" y2="100" stroke="url(#accentGrad)" stroke-width="1.5" opacity="0.8" filter="url(#cyanGlow)"/>
 
   <!-- Label -->
-  <text x="200" y="178" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#6e6e73" text-anchor="middle" letter-spacing="3">AI WEB APPLICATION</text>
+  <rect x="120" y="168" width="160" height="24" rx="4" fill="#040818" opacity="0.9"/>
+  <text x="200" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#00BFFF" text-anchor="middle" letter-spacing="2.5">AI WEB APPLICATION</text>
 </svg>

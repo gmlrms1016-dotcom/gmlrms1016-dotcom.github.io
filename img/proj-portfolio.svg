@@ -1,114 +1,170 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5f7"/>
+      <stop offset="100%" stop-color="#e8e8ed"/>
+    </linearGradient>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d1d1d6"/>
+      <stop offset="100%" stop-color="#a0a0a8"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#13131f"/>
+    </linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity="0.2"/></filter>
+  </defs>
+
   <!-- Background -->
-  <rect width="400" height="200" fill="#f5f5f7"/>
-  <!-- Laptop base shadow -->
-  <ellipse cx="200" cy="185" rx="130" ry="8" fill="#1d1d1f" opacity="0.1"/>
-  <!-- Laptop base/keyboard -->
-  <rect x="60" y="156" width="280" height="20" rx="4" fill="#d1d1d6"/>
-  <rect x="60" y="156" width="280" height="6" rx="4" fill="#c0c0c8"/>
-  <!-- Keyboard keys suggestion -->
-  <rect x="80" y="162" width="240" height="8" rx="2" fill="#e5e5ea" opacity="0.6"/>
-  <!-- Hinge -->
-  <rect x="60" y="152" width="280" height="6" rx="2" fill="#aeaeb2"/>
+  <rect width="400" height="200" fill="url(#bgGrad)"/>
+  <!-- Subtle desk surface -->
+  <rect x="0" y="170" width="400" height="30" fill="#d8d8de"/>
+  <line x1="0" y1="170" x2="400" y2="170" stroke="#c0c0c8" stroke-width="1"/>
+
+  <!-- Laptop shadow -->
+  <ellipse cx="200" cy="175" rx="140" ry="8" fill="#1d1d1f" opacity="0.12"/>
+
+  <!-- Laptop base -->
+  <rect x="55" y="158" width="290" height="18" rx="4" fill="url(#laptopGrad)"/>
+  <rect x="55" y="158" width="290" height="7" rx="4" fill="#c0c0c8"/>
   <!-- Trackpad -->
-  <rect x="166" y="162" width="68" height="10" rx="3" fill="#e5e5ea"/>
+  <rect x="165" y="162" width="70" height="10" rx="3" fill="#b8b8c0"/>
+  <!-- Keyboard area -->
+  <rect x="70" y="162" width="95" height="10" rx="2" fill="#c8c8d0" opacity="0.6"/>
+  <rect x="235" y="162" width="95" height="10" rx="2" fill="#c8c8d0" opacity="0.6"/>
+  <!-- Hinge -->
+  <rect x="55" y="155" width="290" height="5" rx="2" fill="#b0b0b8"/>
 
   <!-- Laptop screen bezel -->
-  <rect x="70" y="22" width="260" height="132" rx="10" fill="#1d1d1f"/>
-  <!-- Screen -->
-  <rect x="80" y="32" width="240" height="112" rx="4" fill="#111113"/>
+  <rect x="65" y="18" width="270" height="140" rx="10" fill="#2a2a2c" filter="url(#s)"/>
 
-  <!-- Code editor: tab bar -->
-  <rect x="80" y="32" width="240" height="16" rx="4" fill="#1a1a1c"/>
-  <rect x="80" y="40" width="240" height="8" fill="#1a1a1c"/>
+  <!-- Screen -->
+  <rect x="75" y="28" width="250" height="120" rx="5" fill="url(#screenGrad)"/>
+
+  <!-- Tab bar -->
+  <rect x="75" y="28" width="250" height="18" rx="5" fill="#181825"/>
+  <rect x="75" y="38" width="250" height="8" fill="#181825"/>
+
   <!-- Tabs -->
-  <rect x="86" y="34" width="54" height="12" rx="3" fill="#2d2d30"/>
-  <rect x="144" y="34" width="46" height="12" rx="3" fill="#1a1a1c"/>
-  <rect x="194" y="34" width="46" height="12" rx="3" fill="#1a1a1c"/>
-  <!-- Tab text lines -->
-  <line x1="94" y1="40" x2="112" y2="40" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="150" y1="40" x2="164" y2="40" stroke="#6e6e73" stroke-width="1" stroke-linecap="round"/>
-  <line x1="200" y1="40" x2="214" y2="40" stroke="#6e6e73" stroke-width="1" stroke-linecap="round"/>
-  <!-- Close dot on tab -->
-  <circle cx="130" cy="40" r="2.5" fill="#3a3a3c"/>
+  <rect x="82" y="30" width="60" height="14" rx="3" fill="#2a2a3e"/>
+  <line x1="88" y1="37" x2="108" y2="37" stroke="#e06c75" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="136" cy="37" r="3" fill="#2a2a3e"/>
+
+  <rect x="146" y="30" width="52" height="14" rx="3" fill="#181825"/>
+  <line x1="152" y1="37" x2="170" y2="37" stroke="#6e6e73" stroke-width="1" stroke-linecap="round"/>
+
+  <rect x="202" y="30" width="52" height="14" rx="3" fill="#181825"/>
+  <line x1="208" y1="37" x2="226" y2="37" stroke="#6e6e73" stroke-width="1" stroke-linecap="round"/>
 
   <!-- Line numbers sidebar -->
-  <rect x="80" y="48" width="18" height="96" fill="#171719"/>
-  <line x1="84" y1="56" x2="92" y2="56" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="64" x2="93" y2="64" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="72" x2="91" y2="72" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="80" x2="93" y2="80" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="88" x2="92" y2="88" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="96" x2="93" y2="96" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="104" x2="91" y2="104" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="112" x2="92" y2="112" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="120" x2="93" y2="120" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="128" x2="91" y2="128" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
-  <line x1="84" y1="136" x2="92" y2="136" stroke="#3a3a3c" stroke-width="1" stroke-linecap="round"/>
+  <rect x="75" y="46" width="20" height="102" fill="#161622"/>
+  <line x1="79" y1="54" x2="88" y2="54" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="62" x2="89" y2="62" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="70" x2="87" y2="70" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="78" x2="89" y2="78" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="86" x2="88" y2="86" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="94" x2="88" y2="94" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="102" x2="89" y2="102" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="110" x2="87" y2="110" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="118" x2="89" y2="118" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="126" x2="88" y2="126" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="134" x2="89" y2="134" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
+  <line x1="79" y1="142" x2="87" y2="142" stroke="#3a3a4e" stroke-width="1" stroke-linecap="round"/>
 
-  <!-- Code lines (HTML/CSS style) -->
-  <!-- Line 1: tag -->
-  <line x1="104" y1="56" x2="116" y2="56" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="118" y1="56" x2="148" y2="56" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="150" y1="56" x2="160" y2="56" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Line 2: indent -->
-  <line x1="112" y1="64" x2="128" y2="64" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="130" y1="64" x2="170" y2="64" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="172" y1="64" x2="200" y2="64" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Line 3: highlighted (selected) -->
-  <rect x="98" y="68" width="160" height="10" rx="1" fill="#2d2d30"/>
-  <line x1="112" y1="73" x2="132" y2="73" stroke="#d1d1d6" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="134" y1="73" x2="158" y2="73" stroke="#aeaeb2" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="160" y1="73" x2="188" y2="73" stroke="#d1d1d6" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Code lines (syntax-highlighted) -->
+  <!-- Line 1: tag (red + green) -->
+  <line x1="100" y1="54" x2="112" y2="54" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+  <line x1="114" y1="54" x2="148" y2="54" stroke="#98c379" stroke-width="2" stroke-linecap="round"/>
+  <line x1="150" y1="54" x2="162" y2="54" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Line 2: indent + props (blue + yellow) -->
+  <line x1="108" y1="62" x2="122" y2="62" stroke="#61afef" stroke-width="2" stroke-linecap="round"/>
+  <line x1="124" y1="62" x2="148" y2="62" stroke="#e5c07b" stroke-width="2" stroke-linecap="round"/>
+  <line x1="150" y1="62" x2="175" y2="62" stroke="#98c379" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Line 3: selected (highlighted row) -->
+  <rect x="95" y="68" width="175" height="10" rx="2" fill="#2d3250"/>
+  <line x1="100" y1="73" x2="120" y2="73" stroke="#c678dd" stroke-width="2" stroke-linecap="round"/>
+  <line x1="122" y1="73" x2="145" y2="73" stroke="#e5c07b" stroke-width="2" stroke-linecap="round"/>
+  <line x1="147" y1="73" x2="170" y2="73" stroke="#98c379" stroke-width="2" stroke-linecap="round"/>
+  <line x1="172" y1="73" x2="195" y2="73" stroke="#61afef" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Line 4 -->
-  <line x1="104" y1="82" x2="130" y2="82" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="132" y1="82" x2="155" y2="82" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="100" y1="82" x2="118" y2="82" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+  <line x1="120" y1="82" x2="150" y2="82" stroke="#56b6c2" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Line 5 indent -->
-  <line x1="112" y1="90" x2="140" y2="90" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="142" y1="90" x2="165" y2="90" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="167" y1="90" x2="190" y2="90" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="108" y1="90" x2="130" y2="90" stroke="#61afef" stroke-width="2" stroke-linecap="round"/>
+  <line x1="132" y1="90" x2="155" y2="90" stroke="#c678dd" stroke-width="2" stroke-linecap="round"/>
+  <line x1="157" y1="90" x2="178" y2="90" stroke="#e5c07b" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Line 6 -->
-  <line x1="112" y1="98" x2="128" y2="98" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="130" y1="98" x2="160" y2="98" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Line 7 closing -->
-  <line x1="104" y1="106" x2="118" y2="106" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="108" y1="98" x2="126" y2="98" stroke="#56b6c2" stroke-width="2" stroke-linecap="round"/>
+  <line x1="128" y1="98" x2="160" y2="98" stroke="#98c379" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Line 7 -->
+  <line x1="100" y1="106" x2="116" y2="106" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+  <line x1="118" y1="106" x2="145" y2="106" stroke="#61afef" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Line 8 -->
-  <line x1="112" y1="114" x2="145" y2="114" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="147" y1="114" x2="172" y2="114" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="108" y1="114" x2="140" y2="114" stroke="#c678dd" stroke-width="2" stroke-linecap="round"/>
+  <line x1="142" y1="114" x2="162" y2="114" stroke="#e5c07b" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Cursor blink -->
-  <rect x="149" y="120" width="2" height="10" rx="1" fill="#aeaeb2" opacity="0.9"/>
+  <rect x="148" y="120" width="2" height="10" rx="1" fill="#98c379" opacity="0.9"/>
+
   <!-- Line 9 -->
-  <line x1="104" y1="130" x2="126" y2="130" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="128" y1="130" x2="152" y2="130" stroke="#aeaeb2" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="100" y1="130" x2="125" y2="130" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+  <line x1="127" y1="130" x2="152" y2="130" stroke="#56b6c2" stroke-width="2" stroke-linecap="round"/>
+
   <!-- Line 10 -->
-  <line x1="104" y1="138" x2="122" y2="138" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="100" y1="138" x2="120" y2="138" stroke="#61afef" stroke-width="2" stroke-linecap="round"/>
+  <line x1="122" y1="138" x2="148" y2="138" stroke="#98c379" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- Right panel: preview -->
-  <rect x="230" y="48" width="90" height="96" fill="#1a1a1c"/>
-  <line x1="228" y1="48" x2="228" y2="144" stroke="#2d2d30" stroke-width="1.5"/>
+  <!-- Line 11 -->
+  <line x1="100" y1="146" x2="115" y2="146" stroke="#e06c75" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Right panel divider -->
+  <line x1="238" y1="46" x2="238" y2="148" stroke="#2a2a3e" stroke-width="1.5"/>
+
+  <!-- Right panel: browser preview -->
+  <rect x="239" y="46" width="86" height="102" fill="#181825"/>
   <!-- Preview nav bar -->
-  <rect x="230" y="48" width="90" height="10" fill="#252527"/>
-  <circle cx="237" cy="53" r="2" fill="#3a3a3c"/>
-  <circle cx="244" cy="53" r="2" fill="#3a3a3c"/>
-  <circle cx="251" cy="53" r="2" fill="#3a3a3c"/>
-  <!-- Preview content: hero text -->
-  <rect x="238" y="64" width="50" height="5" rx="2" fill="#3a3a3c"/>
-  <rect x="238" y="72" width="38" height="4" rx="1.5" fill="#252527"/>
-  <!-- Preview nav items -->
-  <rect x="238" y="82" width="16" height="3" rx="1.5" fill="#252527"/>
-  <rect x="258" y="82" width="16" height="3" rx="1.5" fill="#252527"/>
-  <rect x="278" y="82" width="14" height="3" rx="1.5" fill="#252527"/>
-  <!-- Preview cards -->
-  <rect x="238" y="92" width="26" height="20" rx="3" fill="#252527"/>
-  <rect x="268" y="92" width="26" height="20" rx="3" fill="#252527"/>
-  <rect x="238" y="106" width="56" height="3" rx="1" fill="#2d2d30"/>
-  <rect x="238" y="116" width="50" height="3" rx="1" fill="#2d2d30"/>
-  <rect x="238" y="128" width="20" height="8" rx="4" fill="#3a3a3c"/>
+  <rect x="239" y="46" width="86" height="12" fill="#1e1e2e"/>
+  <circle cx="247" cy="52" r="2.5" fill="#e06c75" opacity="0.7"/>
+  <circle cx="255" cy="52" r="2.5" fill="#e5c07b" opacity="0.7"/>
+  <circle cx="263" cy="52" r="2.5" fill="#98c379" opacity="0.7"/>
+  <!-- Preview URL bar -->
+  <rect x="270" y="48" width="50" height="8" rx="3" fill="#2a2a3e"/>
 
-  <!-- Webcam dot -->
-  <circle cx="200" cy="26" r="2.5" fill="#2a2a2c"/>
-  <circle cx="200" cy="26" r="1.2" fill="#3a3a3c"/>
+  <!-- Preview content: Apple-style hero -->
+  <rect x="239" y="58" width="86" height="40" fill="#0071e3" opacity="0.12"/>
+  <line x1="249" y1="68" x2="314" y2="68" stroke="#e5e5ea" stroke-width="3" stroke-linecap="round"/>
+  <line x1="255" y1="76" x2="308" y2="76" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"/>
+  <rect x="262" y="83" width="40" height="10" rx="5" fill="#0071e3" opacity="0.8"/>
+
+  <!-- Preview nav -->
+  <rect x="239" y="99" width="86" height="8" fill="#1a1a28"/>
+  <line x1="246" y1="103" x2="260" y2="103" stroke="#e5e5ea" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="264" y1="103" x2="278" y2="103" stroke="#e5e5ea" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="282" y1="103" x2="296" y2="103" stroke="#e5e5ea" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="300" y1="103" x2="314" y2="103" stroke="#e5e5ea" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Preview cards -->
+  <rect x="244" y="112" width="30" height="22" rx="4" fill="#2a2a3e"/>
+  <rect x="279" y="112" width="30" height="22" rx="4" fill="#2a2a3e"/>
+  <line x1="248" y1="120" x2="268" y2="120" stroke="#5AC8FA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="248" y1="126" x2="262" y2="126" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="283" y1="120" x2="303" y2="120" stroke="#FF9500" stroke-width="2" stroke-linecap="round"/>
+  <line x1="283" y1="126" x2="297" y2="126" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="244" y1="140" x2="309" y2="140" stroke="#2a2a3e" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="258" y="144" width="24" height="8" rx="4" fill="#0071e3" opacity="0.7"/>
+
+  <!-- Webcam -->
+  <circle cx="200" cy="22" r="3" fill="#1a1a2c"/>
+  <circle cx="200" cy="22" r="1.5" fill="#2a2a3c"/>
 
   <!-- Label -->
-  <text x="200" y="192" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#6e6e73" text-anchor="middle" letter-spacing="3">PORTFOLIO WEBSITE</text>
+  <rect x="120" y="168" width="160" height="24" rx="4" fill="white" opacity="0.7"/>
+  <text x="200" y="184" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#1d1d1f" text-anchor="middle" letter-spacing="2.5">PORTFOLIO WEBSITE</text>
 </svg>

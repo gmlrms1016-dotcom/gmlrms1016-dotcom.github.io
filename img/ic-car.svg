@@ -1,38 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a8de0"/>
+      <stop offset="100%" stop-color="#0055b3"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a9df0"/>
+      <stop offset="100%" stop-color="#0066cc"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6e6e73"/>
+      <stop offset="100%" stop-color="#48484a"/>
+    </linearGradient>
+    <radialGradient id="wheelGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#8e8e93"/>
+      <stop offset="100%" stop-color="#3a3a3c"/>
+    </radialGradient>
+    <filter id="s"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/></filter>
+  </defs>
   <!-- Road -->
-  <rect x="0" y="60" width="80" height="20" rx="0" fill="#e5e5ea"/>
-  <line x1="8" y1="70" x2="20" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,6"/>
-  <line x1="34" y1="70" x2="46" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,6"/>
-  <line x1="60" y1="70" x2="72" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,6"/>
-  <!-- Car body shadow -->
-  <ellipse cx="40" cy="63" rx="30" ry="4" fill="#1d1d1f" opacity="0.15"/>
+  <rect x="0" y="60" width="80" height="20" fill="url(#roadGrad)"/>
+  <line x1="8"  y1="70" x2="20" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,5"/>
+  <line x1="34" y1="70" x2="46" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,5"/>
+  <line x1="60" y1="70" x2="72" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8,5"/>
+  <!-- Shadow -->
+  <ellipse cx="40" cy="62" rx="30" ry="3.5" fill="#000" opacity="0.2"/>
   <!-- Car body lower -->
-  <rect x="8" y="46" width="64" height="18" rx="5" fill="#1d1d1f"/>
+  <rect x="8" y="46" width="64" height="17" rx="5" fill="url(#bodyGrad)" filter="url(#s)"/>
   <!-- Car roof -->
-  <path d="M20 46 Q24 28 32 26 L48 26 Q56 28 60 46 Z" fill="#1d1d1f"/>
+  <path d="M22 46 Q25 28 33 25 L47 25 Q55 28 58 46 Z" fill="url(#roofGrad)"/>
+  <!-- Roof shine -->
+  <path d="M25 46 Q27 32 34 27 L37 26 Q30 30 28 46 Z" fill="white" opacity="0.15"/>
   <!-- Windshield front -->
-  <path d="M48 30 Q55 32 58 46 L44 46 Z" fill="#6e6e73" opacity="0.5"/>
-  <!-- Windshield rear -->
-  <path d="M32 30 Q25 32 22 46 L36 46 Z" fill="#6e6e73" opacity="0.5"/>
-  <!-- Car windows side -->
-  <rect x="33" y="30" width="14" height="14" rx="2" fill="#6e6e73" opacity="0.6"/>
-  <!-- Door line -->
-  <line x1="40" y1="46" x2="40" y2="63" stroke="#3a3a3c" stroke-width="1.2"/>
-  <!-- Door handle -->
-  <rect x="42" y="53" width="6" height="2" rx="1" fill="#6e6e73"/>
-  <rect x="32" y="53" width="6" height="2" rx="1" fill="#6e6e73"/>
+  <path d="M47 28 Q54 32 57 46 L43 46 Z" fill="#b8d4f0" opacity="0.65"/>
+  <path d="M33 28 Q26 32 23 46 L37 46 Z" fill="#b8d4f0" opacity="0.65"/>
+  <!-- Side window -->
+  <rect x="34" y="29" width="12" height="13" rx="2" fill="#b8d4f0" opacity="0.7"/>
+  <!-- Window divider -->
+  <line x1="40" y1="29" x2="40" y2="42" stroke="#0055b3" stroke-width="1" opacity="0.5"/>
+  <!-- Door seam -->
+  <line x1="40" y1="46" x2="40" y2="62" stroke="#0044aa" stroke-width="1.2" opacity="0.6"/>
+  <!-- Door handles (chrome) -->
+  <rect x="42" y="53" width="6" height="2.5" rx="1.2" fill="#c8d8f0"/>
+  <rect x="32" y="53" width="6" height="2.5" rx="1.2" fill="#c8d8f0"/>
+  <!-- Body accent line -->
+  <line x1="10" y1="52" x2="70" y2="52" stroke="#5aabff" stroke-width="1" opacity="0.4"/>
   <!-- Front wheel -->
-  <circle cx="56" cy="62" r="9" fill="#3a3a3c"/>
-  <circle cx="56" cy="62" r="6" fill="#6e6e73"/>
-  <circle cx="56" cy="62" r="3" fill="#1d1d1f"/>
-  <circle cx="56" cy="62" r="1.5" fill="#aeaeb2"/>
+  <circle cx="56" cy="62" r="9"   fill="#2a2a2c"/>
+  <circle cx="56" cy="62" r="7"   fill="url(#wheelGrad)"/>
+  <circle cx="56" cy="62" r="4"   fill="#1a1a1c"/>
+  <circle cx="56" cy="62" r="2.5" fill="#c8c8cc"/>
+  <line x1="56" y1="55" x2="56" y2="69" stroke="#5a5a5e" stroke-width="1"/>
+  <line x1="49" y1="62" x2="63" y2="62" stroke="#5a5a5e" stroke-width="1"/>
   <!-- Rear wheel -->
-  <circle cx="24" cy="62" r="9" fill="#3a3a3c"/>
-  <circle cx="24" cy="62" r="6" fill="#6e6e73"/>
-  <circle cx="24" cy="62" r="3" fill="#1d1d1f"/>
-  <circle cx="24" cy="62" r="1.5" fill="#aeaeb2"/>
-  <!-- Headlight -->
-  <rect x="66" y="50" width="6" height="5" rx="2" fill="#d1d1d6"/>
-  <!-- Taillight -->
-  <rect x="8" y="50" width="6" height="5" rx="2" fill="#aeaeb2"/>
+  <circle cx="24" cy="62" r="9"   fill="#2a2a2c"/>
+  <circle cx="24" cy="62" r="7"   fill="url(#wheelGrad)"/>
+  <circle cx="24" cy="62" r="4"   fill="#1a1a1c"/>
+  <circle cx="24" cy="62" r="2.5" fill="#c8c8cc"/>
+  <line x1="24" y1="55" x2="24" y2="69" stroke="#5a5a5e" stroke-width="1"/>
+  <line x1="17" y1="62" x2="31" y2="62" stroke="#5a5a5e" stroke-width="1"/>
+  <!-- Headlight (bright yellow-white) -->
+  <rect x="66" y="49" width="7" height="6" rx="2.5" fill="#fffde0"/>
+  <rect x="66" y="49" width="7" height="6" rx="2.5" fill="none" stroke="#f0c040" stroke-width="0.8"/>
+  <!-- Headlight beam -->
+  <path d="M73 50 L78 47 M73 52 L78 52 M73 54 L78 57" stroke="#fffde0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Taillight (red) -->
+  <rect x="7" y="49" width="6" height="6" rx="2.5" fill="#FF3B30"/>
+  <!-- Side mirror -->
+  <rect x="5" y="44" width="5" height="4" rx="1.5" fill="#3a8de0"/>
 </svg>
