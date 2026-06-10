@@ -738,11 +738,20 @@
       grid-template-columns: 1fr;
       max-width: 900px;
       margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      /* 슬라이드별 배경이 래퍼 전체를 채움 (부드럽게 전환) */
+      background: var(--black);
+      transition: background 0.7s ease;
     }
+    /* 슬라이드와 동일한 배경색/그라데이션을 래퍼 전체에 적용 */
+    .contact-wrapper.bg-gmail { background: linear-gradient(180deg, #ffffff 0%, #f1f1f4 100%); }
+    .contact-wrapper.bg-mail  { background: linear-gradient(180deg, #1d74f0 0%, #3fb9f6 100%); }
+    .contact-wrapper.bg-phone { background: linear-gradient(180deg, #63ef74 0%, #0bc41e 100%); }
 
     /* Full-width info card */
     .contact-card {
-      background: var(--black);
+      background: transparent;
       border-radius: 28px;
       padding: 56px 44px 36px;
       color: var(--white);
@@ -750,7 +759,11 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      transition: color 0.7s ease;
     }
+    /* gmail(흰 배경)일 때 카드 제목/설명을 어둡게 */
+    .contact-wrapper.bg-gmail .contact-card h2 { color: #1d1d1f; }
+    .contact-wrapper.bg-gmail .contact-card > p { color: rgba(0,0,0,.55); }
 
     .contact-card h2 {
       font-size: 28px;
@@ -836,23 +849,23 @@
     }
     .contact-slide:hover { filter: brightness(1.06); }
 
-    /* ── 슬라이드별 배경: 아이콘 사진과 동일한 색/그라데이션 ── */
-    /* Gmail (학교 이메일): 흰 배경 */
+    /* ── 슬라이드별 글자색: 배경은 래퍼가 담당, 슬라이드는 투명 ── */
+    /* Gmail (학교 이메일): 흰 배경 → 어두운 글자 */
     .contact-slide.slide-gmail {
-      background: linear-gradient(180deg, #ffffff 0%, #f1f1f4 100%);
+      background: transparent;
       color: #1d1d1f;
     }
     .contact-slide.slide-gmail .contact-slide-label { color: rgba(0,0,0,.45); }
 
-    /* Apple Mail (iCloud 이메일): 파란 그라데이션 */
+    /* Apple Mail (iCloud 이메일): 파란 배경 → 흰 글자 */
     .contact-slide.slide-mail {
-      background: linear-gradient(180deg, #1d74f0 0%, #3fb9f6 100%);
+      background: transparent;
     }
     .contact-slide.slide-mail .contact-slide-label { color: rgba(255,255,255,.65); }
 
-    /* Phone (휴대폰): 초록 그라데이션 */
+    /* Phone (휴대폰): 초록 배경 → 흰 글자 */
     .contact-slide.slide-phone {
-      background: linear-gradient(180deg, #63ef74 0%, #0bc41e 100%);
+      background: transparent;
     }
     .contact-slide.slide-phone .contact-slide-label { color: rgba(255,255,255,.75); }
 
@@ -875,13 +888,47 @@
       color: rgba(255,255,255,.5);
     }
 
+    /* 현재 슬라이드 실행 버튼 ("연락하기") — btn-primary 동일 디자인 */
+    .contact-action {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .contact-action-btn {
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -.022em;
+      color: var(--white);
+      background: var(--blue);
+      padding: 12px 22px;
+      border-radius: 980px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .contact-action-btn:hover { background: var(--blue-hover); }
+
     /* 컨트롤: 타임드 dotnav (scrim 알약 + 진행바 dot) */
     .contact-gallery-controls {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 18px;
+    }
+    /* gmail(흰 배경)일 때 dot scrim/진행바를 어둡게 → 가시성 확보 */
+    .contact-wrapper.bg-gmail .gallery-dots { background: rgba(0,0,0,.07); }
+    .contact-wrapper.bg-gmail .gallery-dot { background: rgba(0,0,0,.25); }
+    .contact-wrapper.bg-gmail .gallery-dot.is-active { background: rgba(0,0,0,.12); }
+    .contact-wrapper.bg-gmail .dot-progress { background: #1d1d1f; }
+    .contact-wrapper.bg-gmail .gallery-playpause {
+      background: rgba(0,0,0,.08);
+      color: rgba(0,0,0,.55);
+    }
+    .contact-wrapper.bg-gmail .gallery-playpause:hover {
+      background: rgba(0,0,0,.16);
+      color: #1d1d1f;
     }
 
     /* scrim: 반투명 알약 배경 */
@@ -1895,6 +1942,11 @@
 
           </div>
 
+          <!-- 현재 슬라이드 실행 버튼 (이메일 전송 / 전화 앱으로 이동) -->
+          <div class="contact-action">
+            <button type="button" class="contact-action-btn" id="contactActionBtn">연락하기</button>
+          </div>
+
           <!-- 인디케이터 (dots) + 재생/일시정지 -->
           <div class="contact-gallery-controls">
             <div class="gallery-dots">
@@ -2023,20 +2075,29 @@
   /* ------ Contact 자동 순환 갤러리 (타임드 dotnav) ------ */
   const gallery = document.getElementById('contactGallery');
   if (gallery) {
+    const wrapper   = gallery.closest('.contact-wrapper');
+    const actionBtn = document.getElementById('contactActionBtn');
     const slides    = gallery.querySelectorAll('.contact-slide');
     const dots      = gallery.querySelectorAll('.gallery-dot');
     const ppBtn     = document.getElementById('galleryPlayPause');
     const iconPause = ppBtn.querySelector('.icon-pause');
     const iconPlay  = ppBtn.querySelector('.icon-play');
+    // 슬라이드 → 래퍼 배경 클래스 매핑
+    const bgClasses = ['bg-gmail', 'bg-mail', 'bg-phone'];
     let current = 0;
     let playing = true;
 
-    // 슬라이드 전환 + 진행바 애니메이션 재시작
+    // 슬라이드 전환 + 진행바 애니메이션 재시작 + 래퍼 배경색 전환
     function goTo(index) {
       slides[current].classList.remove('is-active');
       dots[current].classList.remove('is-active');
       current = index;
       slides[current].classList.add('is-active');
+      // 래퍼 전체 배경색을 현재 슬라이드 색으로 교체
+      if (wrapper) {
+        wrapper.classList.remove(...bgClasses);
+        wrapper.classList.add(bgClasses[current]);
+      }
       const dot  = dots[current];
       const fill = dot.querySelector('.dot-progress');
       // 진행바 리셋 (reflow로 애니메이션 재시작)
@@ -2044,6 +2105,17 @@
       void fill.offsetWidth;
       fill.style.animation = '';
       dot.classList.add('is-active');
+    }
+
+    // 초기 배경색 적용
+    if (wrapper) wrapper.classList.add(bgClasses[0]);
+
+    // "연락하기" → 현재 슬라이드의 동작 실행 (mailto / tel 로 이동)
+    if (actionBtn) {
+      actionBtn.addEventListener('click', () => {
+        const href = slides[current].getAttribute('href');
+        if (href) window.location.href = href;
+      });
     }
 
     // 진행바가 다 차면 다음 슬라이드로
