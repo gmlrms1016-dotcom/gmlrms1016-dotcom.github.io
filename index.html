@@ -819,28 +819,49 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: var(--white);
-      background: rgba(255,255,255,.06);
       border-radius: 22px;
       opacity: 0;
       transform: scale(.97);
       pointer-events: none;
-      transition: opacity .7s ease, transform .7s ease, background .25s ease;
+      transition: opacity .7s ease, transform .7s ease, filter .25s ease;
+      overflow: hidden;
     }
     .contact-slide.is-active {
       opacity: 1;
       transform: scale(1);
       pointer-events: auto;
     }
-    .contact-slide:hover { background: rgba(255,255,255,.12); }
+    .contact-slide:hover { filter: brightness(1.06); }
 
-    .contact-slide-icon {
-      width: 64px; height: 64px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
+    /* ── 슬라이드별 배경: 아이콘 사진과 동일한 색/그라데이션 ── */
+    /* Gmail (학교 이메일): 흰 배경 */
+    .contact-slide.slide-gmail {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f1f4 100%);
+      color: #1d1d1f;
+    }
+    .contact-slide.slide-gmail .contact-slide-label { color: rgba(0,0,0,.45); }
+
+    /* Apple Mail (iCloud 이메일): 파란 그라데이션 */
+    .contact-slide.slide-mail {
+      background: linear-gradient(180deg, #1d74f0 0%, #3fb9f6 100%);
+    }
+    .contact-slide.slide-mail .contact-slide-label { color: rgba(255,255,255,.65); }
+
+    /* Phone (휴대폰): 초록 그라데이션 */
+    .contact-slide.slide-phone {
+      background: linear-gradient(180deg, #63ef74 0%, #0bc41e 100%);
+    }
+    .contact-slide.slide-phone .contact-slide-label { color: rgba(255,255,255,.75); }
+
+    /* 앱 아이콘 사진 */
+    .contact-slide-appicon {
+      width: 74px; height: 74px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
     }
 
     .contact-slide-value {
@@ -854,34 +875,64 @@
       color: rgba(255,255,255,.5);
     }
 
-    /* 컨트롤: dots + 재생/일시정지 */
+    /* 컨트롤: 타임드 dotnav (scrim 알약 + 진행바 dot) */
     .contact-gallery-controls {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
       margin-top: 22px;
     }
 
+    /* scrim: 반투명 알약 배경 */
     .gallery-dots {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 14px;
+      border-radius: 980px;
     }
 
     .gallery-dot {
-      width: 8px; height: 8px;
+      position: relative;
+      width: 9px; height: 9px;
       border-radius: 980px;
       border: none;
       padding: 0;
-      background: rgba(255,255,255,.3);
+      background: rgba(255,255,255,.35);
       cursor: pointer;
-      transition: width .35s ease, background .35s ease;
+      overflow: hidden;
+      transition: width .4s cubic-bezier(.4,0,.2,1), background .4s ease;
     }
-    .gallery-dot:hover { background: rgba(255,255,255,.55); }
+    .gallery-dot:hover { background: rgba(255,255,255,.6); }
+
+    /* 활성 dot: 알약형으로 확장 + 내부 진행바 */
     .gallery-dot.is-active {
-      width: 22px;
+      width: 38px;
+      background: rgba(255,255,255,.32);
+    }
+
+    .dot-progress {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 0;
+      border-radius: 980px;
       background: var(--white);
+    }
+    .gallery-dot.is-active .dot-progress {
+      animation: dotFill 4s linear forwards;
+    }
+    /* 일시정지: 진행바 멈춤 */
+    .contact-gallery.is-paused .dot-progress {
+      animation-play-state: paused;
+    }
+
+    @keyframes dotFill {
+      from { width: 0; }
+      to   { width: 100%; }
     }
 
     .gallery-playpause {
@@ -1824,20 +1875,20 @@
         <div class="contact-gallery" id="contactGallery">
           <div class="contact-gallery-track">
 
-            <a href="mailto:gmlrms1016@dongyang.ac.kr" class="contact-slide is-active">
-              <div class="contact-slide-icon"><img src="img/ic-email.svg" alt="이메일" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+            <a href="mailto:gmlrms1016@dongyang.ac.kr" class="contact-slide slide-gmail is-active">
+              <img src="img/icon/gmail.jpeg" alt="Gmail" class="contact-slide-appicon">
               <div class="contact-slide-value">gmlrms1016@dongyang.ac.kr</div>
               <div class="contact-slide-label">학교 이메일</div>
             </a>
 
-            <a href="mailto:www.gmlrms@icloud.com" class="contact-slide">
-              <div class="contact-slide-icon"><img src="img/ic-icloud.svg" alt="iCloud" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+            <a href="mailto:www.gmlrms@icloud.com" class="contact-slide slide-mail">
+              <img src="img/icon/mail.jpeg" alt="Mail" class="contact-slide-appicon">
               <div class="contact-slide-value">www.gmlrms@icloud.com</div>
               <div class="contact-slide-label">iCloud 이메일</div>
             </a>
 
-            <a href="tel:010-4822-8641" class="contact-slide">
-              <div class="contact-slide-icon"><img src="img/ic-phone.svg" alt="전화" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+            <a href="tel:010-4822-8641" class="contact-slide slide-phone">
+              <img src="img/icon/phone.jpeg" alt="전화" class="contact-slide-appicon">
               <div class="contact-slide-value">010-4822-8641</div>
               <div class="contact-slide-label">휴대폰</div>
             </a>
@@ -1847,9 +1898,9 @@
           <!-- 인디케이터 (dots) + 재생/일시정지 -->
           <div class="contact-gallery-controls">
             <div class="gallery-dots">
-              <button class="gallery-dot is-active" data-index="0" aria-label="학교 이메일"></button>
-              <button class="gallery-dot" data-index="1" aria-label="iCloud 이메일"></button>
-              <button class="gallery-dot" data-index="2" aria-label="휴대폰"></button>
+              <button class="gallery-dot is-active" data-index="0" aria-label="학교 이메일"><span class="dot-progress"></span></button>
+              <button class="gallery-dot" data-index="1" aria-label="iCloud 이메일"><span class="dot-progress"></span></button>
+              <button class="gallery-dot" data-index="2" aria-label="휴대폰"><span class="dot-progress"></span></button>
             </div>
             <button class="gallery-playpause" id="galleryPlayPause" aria-label="일시정지">
               <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -1969,7 +2020,7 @@
   const statsRow = document.querySelector('.stats-row');
   if (statsRow) statsObserver.observe(statsRow);
 
-  /* ------ Contact 자동 순환 갤러리 ------ */
+  /* ------ Contact 자동 순환 갤러리 (타임드 dotnav) ------ */
   const gallery = document.getElementById('contactGallery');
   if (gallery) {
     const slides    = gallery.querySelectorAll('.contact-slide');
@@ -1977,58 +2028,61 @@
     const ppBtn     = document.getElementById('galleryPlayPause');
     const iconPause = ppBtn.querySelector('.icon-pause');
     const iconPlay  = ppBtn.querySelector('.icon-play');
-    const INTERVAL  = 4000;
     let current = 0;
     let playing = true;
-    let timer   = null;
 
+    // 슬라이드 전환 + 진행바 애니메이션 재시작
     function goTo(index) {
       slides[current].classList.remove('is-active');
       dots[current].classList.remove('is-active');
       current = index;
       slides[current].classList.add('is-active');
-      dots[current].classList.add('is-active');
+      const dot  = dots[current];
+      const fill = dot.querySelector('.dot-progress');
+      // 진행바 리셋 (reflow로 애니메이션 재시작)
+      fill.style.animation = 'none';
+      void fill.offsetWidth;
+      fill.style.animation = '';
+      dot.classList.add('is-active');
     }
 
-    function next() { goTo((current + 1) % slides.length); }
-
-    function startTimer() {
-      stopTimer();
-      timer = setInterval(next, INTERVAL);
-    }
-    function stopTimer() {
-      if (timer) { clearInterval(timer); timer = null; }
-    }
-
-    // dot 클릭 → 해당 슬라이드로 이동 (재생 중이면 타이머 리셋)
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        goTo(i);
-        if (playing) startTimer();
+    // 진행바가 다 차면 다음 슬라이드로
+    dots.forEach((dot) => {
+      dot.querySelector('.dot-progress').addEventListener('animationend', () => {
+        goTo((current + 1) % slides.length);
       });
     });
+
+    // dot 클릭 → 해당 슬라이드로 이동 (진행바 처음부터)
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        goTo(i);
+      });
+    });
+
+    function pause() {
+      gallery.classList.add('is-paused');
+      iconPause.style.display = 'none';
+      iconPlay.style.display  = '';
+      ppBtn.setAttribute('aria-label', '재생');
+    }
+    function play() {
+      gallery.classList.remove('is-paused');
+      iconPause.style.display = '';
+      iconPlay.style.display  = 'none';
+      ppBtn.setAttribute('aria-label', '일시정지');
+    }
 
     // 재생/일시정지 토글
     ppBtn.addEventListener('click', () => {
       playing = !playing;
-      if (playing) {
-        startTimer();
-        iconPause.style.display = '';
-        iconPlay.style.display  = 'none';
-        ppBtn.setAttribute('aria-label', '일시정지');
-      } else {
-        stopTimer();
-        iconPause.style.display = 'none';
-        iconPlay.style.display  = '';
-        ppBtn.setAttribute('aria-label', '재생');
-      }
+      playing ? play() : pause();
     });
 
     // 마우스 올리면 일시정지, 떼면 재개 (재생 상태일 때만)
-    gallery.addEventListener('mouseenter', stopTimer);
-    gallery.addEventListener('mouseleave', () => { if (playing) startTimer(); });
-
-    startTimer();
+    gallery.addEventListener('mouseenter', () => gallery.classList.add('is-paused'));
+    gallery.addEventListener('mouseleave', () => { if (playing) gallery.classList.remove('is-paused'); });
   }
 
   /* ------ Formspree 폼 제출 처리 ------ */
