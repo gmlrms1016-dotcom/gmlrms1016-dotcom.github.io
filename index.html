@@ -732,23 +732,24 @@
       text-align: center;
     }
 
-    /* Contact layout: 2 columns */
+    /* Contact layout: single full-width card */
     .contact-wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      grid-template-columns: 1fr;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    /* Left: info card */
+    /* Full-width info card */
     .contact-card {
       background: var(--black);
       border-radius: 28px;
-      padding: 44px 36px;
+      padding: 56px 44px 36px;
       color: var(--white);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .contact-card h2 {
@@ -798,6 +799,103 @@
 
     .contact-link-text { text-align: left; }
     .contact-link-label { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+    /* ── 자동 순환 갤러리 ── */
+    .contact-gallery {
+      width: 100%;
+      max-width: 640px;
+      margin-top: 8px;
+    }
+
+    .contact-gallery-track {
+      position: relative;
+      height: 190px;
+    }
+
+    .contact-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      border-radius: 22px;
+      opacity: 0;
+      transform: scale(.97);
+      pointer-events: none;
+      transition: opacity .7s ease, transform .7s ease, background .25s ease;
+    }
+    .contact-slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .contact-slide:hover { background: rgba(255,255,255,.12); }
+
+    .contact-slide-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .contact-slide-value {
+      font-size: clamp(17px, 3vw, 24px);
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+
+    .contact-slide-label {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* 컨트롤: dots + 재생/일시정지 */
+    .contact-gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .gallery-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-dot {
+      width: 8px; height: 8px;
+      border-radius: 980px;
+      border: none;
+      padding: 0;
+      background: rgba(255,255,255,.3);
+      cursor: pointer;
+      transition: width .35s ease, background .35s ease;
+    }
+    .gallery-dot:hover { background: rgba(255,255,255,.55); }
+    .gallery-dot.is-active {
+      width: 22px;
+      background: var(--white);
+    }
+
+    .gallery-playpause {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.75);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s ease, color .2s ease;
+    }
+    .gallery-playpause:hover { background: rgba(255,255,255,.22); color: var(--white); }
+    .gallery-playpause svg { width: 13px; height: 13px; }
 
     /* Right: form card */
     .contact-form-card {
@@ -1237,8 +1335,8 @@
   <div class="hero-inner">
     <span class="hero-label">Computer Software Engineering</span>
     <h1 class="hero-title">
-      안녕하세요,<br>
-      <em>윤희근입니다.</em>
+      <em>안녕하세요,<br>
+      윤희근입니다.</em>
     </h1>
     <p class="hero-sub">
       새로운 기술을 배우고 문제를 해결하는 것을 즐기는<br>
@@ -1713,7 +1811,7 @@
 
     <div class="contact-wrapper">
 
-      <!-- 왼쪽: 연락처 정보 -->
+      <!-- 연락처 카드 (풀폭) -->
       <div class="contact-card">
         <h2>함께 만들어요.</h2>
         <p>
@@ -1721,65 +1819,43 @@
           이야기 나누고 싶으시다면<br>
           언제든지 편하게 연락해 주세요.
         </p>
-        <div class="contact-links">
-          <a href="mailto:gmlrms1016@dongyang.ac.kr" class="contact-link">
-            <div class="contact-link-icon"><img src="img/ic-email.svg" alt="이메일" width="20" height="20" style="filter:invert(1);opacity:.85;"></div>
-            <div class="contact-link-text">
-              gmlrms1016@dongyang.ac.kr
-              <div class="contact-link-label">학교 이메일</div>
+
+        <!-- 자동 순환 갤러리 -->
+        <div class="contact-gallery" id="contactGallery">
+          <div class="contact-gallery-track">
+
+            <a href="mailto:gmlrms1016@dongyang.ac.kr" class="contact-slide is-active">
+              <div class="contact-slide-icon"><img src="img/ic-email.svg" alt="이메일" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+              <div class="contact-slide-value">gmlrms1016@dongyang.ac.kr</div>
+              <div class="contact-slide-label">학교 이메일</div>
+            </a>
+
+            <a href="mailto:www.gmlrms@icloud.com" class="contact-slide">
+              <div class="contact-slide-icon"><img src="img/ic-icloud.svg" alt="iCloud" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+              <div class="contact-slide-value">www.gmlrms@icloud.com</div>
+              <div class="contact-slide-label">iCloud 이메일</div>
+            </a>
+
+            <a href="tel:010-4822-8641" class="contact-slide">
+              <div class="contact-slide-icon"><img src="img/ic-phone.svg" alt="전화" width="44" height="44" style="filter:invert(1);opacity:.9;"></div>
+              <div class="contact-slide-value">010-4822-8641</div>
+              <div class="contact-slide-label">휴대폰</div>
+            </a>
+
+          </div>
+
+          <!-- 인디케이터 (dots) + 재생/일시정지 -->
+          <div class="contact-gallery-controls">
+            <div class="gallery-dots">
+              <button class="gallery-dot is-active" data-index="0" aria-label="학교 이메일"></button>
+              <button class="gallery-dot" data-index="1" aria-label="iCloud 이메일"></button>
+              <button class="gallery-dot" data-index="2" aria-label="휴대폰"></button>
             </div>
-          </a>
-          <a href="mailto:www.gmlrms@icloud.com" class="contact-link">
-            <div class="contact-link-icon"><img src="img/ic-icloud.svg" alt="iCloud" width="20" height="20" style="filter:invert(1);opacity:.85;"></div>
-            <div class="contact-link-text">
-              www.gmlrms@icloud.com
-              <div class="contact-link-label">iCloud 이메일</div>
-            </div>
-          </a>
-          <a href="tel:010-4822-8641" class="contact-link">
-            <div class="contact-link-icon"><img src="img/ic-phone.svg" alt="전화" width="20" height="20" style="filter:invert(1);opacity:.85;"></div>
-            <div class="contact-link-text">
-              010-4822-8641
-              <div class="contact-link-label">휴대폰</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 오른쪽: 메세지 폼 (Formspree) -->
-      <div class="contact-form-card">
-        <h3>메세지 보내기</h3>
-
-        <!-- ✅ YOUR_FORM_ID 자리에 formspree.io에서 받은 ID를 넣으세요 -->
-        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form-group">
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="홍길동" required>
+            <button class="gallery-playpause" id="galleryPlayPause" aria-label="일시정지">
+              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </button>
           </div>
-          <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" placeholder="example@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">제목</label>
-            <input type="text" id="subject" name="subject" placeholder="문의 제목을 입력하세요">
-          </div>
-          <div class="form-group">
-            <label for="message">메세지</label>
-            <textarea id="message" name="message" placeholder="내용을 입력하세요..." required></textarea>
-          </div>
-
-          <button type="submit" class="form-submit" id="submitBtn">보내기 →</button>
-          <p class="formspree-note">
-            Powered by <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> · 무료 서비스
-          </p>
-        </form>
-
-        <!-- 전송 완료 메세지 -->
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon">✅</div>
-          <h4>메세지를 보냈습니다!</h4>
-          <p>빠른 시일 내에 답변 드리겠습니다. 감사합니다 🙏</p>
         </div>
       </div>
 
@@ -1892,6 +1968,68 @@
 
   const statsRow = document.querySelector('.stats-row');
   if (statsRow) statsObserver.observe(statsRow);
+
+  /* ------ Contact 자동 순환 갤러리 ------ */
+  const gallery = document.getElementById('contactGallery');
+  if (gallery) {
+    const slides    = gallery.querySelectorAll('.contact-slide');
+    const dots      = gallery.querySelectorAll('.gallery-dot');
+    const ppBtn     = document.getElementById('galleryPlayPause');
+    const iconPause = ppBtn.querySelector('.icon-pause');
+    const iconPlay  = ppBtn.querySelector('.icon-play');
+    const INTERVAL  = 4000;
+    let current = 0;
+    let playing = true;
+    let timer   = null;
+
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = index;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+
+    function startTimer() {
+      stopTimer();
+      timer = setInterval(next, INTERVAL);
+    }
+    function stopTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    // dot 클릭 → 해당 슬라이드로 이동 (재생 중이면 타이머 리셋)
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goTo(i);
+        if (playing) startTimer();
+      });
+    });
+
+    // 재생/일시정지 토글
+    ppBtn.addEventListener('click', () => {
+      playing = !playing;
+      if (playing) {
+        startTimer();
+        iconPause.style.display = '';
+        iconPlay.style.display  = 'none';
+        ppBtn.setAttribute('aria-label', '일시정지');
+      } else {
+        stopTimer();
+        iconPause.style.display = 'none';
+        iconPlay.style.display  = '';
+        ppBtn.setAttribute('aria-label', '재생');
+      }
+    });
+
+    // 마우스 올리면 일시정지, 떼면 재개 (재생 상태일 때만)
+    gallery.addEventListener('mouseenter', stopTimer);
+    gallery.addEventListener('mouseleave', () => { if (playing) startTimer(); });
+
+    startTimer();
+  }
 
   /* ------ Formspree 폼 제출 처리 ------ */
   const form        = document.getElementById('contactForm');
