@@ -1944,6 +1944,25 @@
     }
   });
 
+  /* ------ Hero 타이틀 그라데이션: 스크롤 정도에 따라 변화 (블루 계열 유지) ------ */
+  const heroEm = document.querySelector('.hero-title em');
+  if (heroEm) {
+    const updateHeroGradient = () => {
+      const doc = document.documentElement;
+      const max = (doc.scrollHeight - doc.clientHeight) || 1;
+      const p = Math.min(Math.max(window.scrollY / max, 0), 1); // 스크롤 진행도 0~1
+      // 블루 계열(hue 200~235) 안에서 색상/각도만 변화
+      const angle = 120 + p * 140;          // 120deg → 260deg
+      const h1 = 211 + p * 24;              // 211 → 235 (진한 블루)
+      const h2 = 200 + p * 25;              // 200 → 225 (밝은 블루)
+      const c1 = `hsl(${h1.toFixed(1)}, 100%, 45%)`;
+      const c2 = `hsl(${h2.toFixed(1)}, 92%, 66%)`;
+      heroEm.style.backgroundImage = `linear-gradient(${angle.toFixed(1)}deg, ${c1} 0%, ${c2} 100%)`;
+    };
+    updateHeroGradient();
+    window.addEventListener('scroll', updateHeroGradient, { passive: true });
+  }
+
   /* ------ 메가 메뉴: li hover → 메뉴바 전체 드롭다운 + 배경 blur ------ */
   const navScrim = document.getElementById('navScrim');
   const navLinksUl = document.querySelector('.nav-links');
