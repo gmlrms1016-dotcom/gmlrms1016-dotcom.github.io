@@ -1951,12 +1951,12 @@
       const doc = document.documentElement;
       const max = (doc.scrollHeight - doc.clientHeight) || 1;
       const p = Math.min(Math.max(window.scrollY / max, 0), 1); // 스크롤 진행도 0~1
-      // 블루 계열(hue 200~235) 안에서 색상/각도만 변화
+      // 블루 계열(hue 205~230) 안에서 색상/각도만 변화 (가독성 위해 더 진하게)
       const angle = 120 + p * 140;          // 120deg → 260deg
-      const h1 = 211 + p * 24;              // 211 → 235 (진한 블루)
-      const h2 = 200 + p * 25;              // 200 → 225 (밝은 블루)
-      const c1 = `hsl(${h1.toFixed(1)}, 100%, 45%)`;
-      const c2 = `hsl(${h2.toFixed(1)}, 92%, 66%)`;
+      const h1 = 214 + p * 16;              // 214 → 230 (진한 블루)
+      const h2 = 205 + p * 18;              // 205 → 223 (조금 밝은 블루)
+      const c1 = `hsl(${h1.toFixed(1)}, 100%, 40%)`;  // 어둡게 → 대비↑
+      const c2 = `hsl(${h2.toFixed(1)}, 95%, 50%)`;   // 밝은 쪽도 충분히 진하게
       heroEm.style.backgroundImage = `linear-gradient(${angle.toFixed(1)}deg, ${c1} 0%, ${c2} 100%)`;
     };
     updateHeroGradient();
