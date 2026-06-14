@@ -71,12 +71,23 @@
 
     .nav-links {
       display: flex;
-      gap: 34px;
+      flex: 1;                 /* nav 폭을 꽉 채움 */
+      justify-content: space-between;
+      align-items: center;
       list-style: none;
+      margin: 0 40px;          /* 로고/CTA 와의 간격 */
+      height: 100%;
+    }
+    .nav-links > li {
+      flex: 1;
+      text-align: center;
     }
 
     .nav-links a {
-      font-size: 12px;
+      display: block;
+      padding: 0 8px;
+      line-height: var(--nav-h);
+      font-size: 13px;
       font-weight: 400;
       letter-spacing: -.01em;
       color: rgba(0,0,0,.8);
@@ -84,6 +95,64 @@
       transition: color .2s ease;
     }
     .nav-links a:hover { color: #000; }
+
+    /* ── 메가 드롭다운 패널 (li hover 시 메뉴바 전체가 내려옴) ── */
+    .nav-mega {
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-top: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 24px 44px rgba(0,0,0,.10);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    nav.is-open .nav-mega {
+      max-height: 320px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-mega-list {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 26px 22px 34px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-mega-list a {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+      line-height: 1.3;
+    }
+    .nav-mega-list a:hover { background: rgba(0,0,0,.05); transform: translateY(-2px); }
+    .nav-mega-list .m-t { font-size: 18px; font-weight: 600; color: #1d1d1f; letter-spacing: -.02em; }
+    .nav-mega-list .m-d { font-size: 12px; color: rgba(0,0,0,.5); }
+
+    /* ── 메뉴바 외 화면 blur 스크림 ── */
+    .nav-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 9990;           /* nav(9999) 아래, 본문 위 */
+      background: rgba(0,0,0,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .nav-scrim.is-open { opacity: 1; pointer-events: auto; }
 
     .nav-cta {
       font-size: 12px;
@@ -1158,6 +1227,7 @@
     ========================================= */
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
+      .nav-mega, .nav-scrim { display: none; }
       .nav-menu-btn { display: flex; }
 
       .about-grid { grid-template-columns: 1fr; }
@@ -1223,7 +1293,22 @@
   <button class="nav-menu-btn" id="menuBtn" aria-label="메뉴">
     <span></span><span></span><span></span>
   </button>
+
+  <!-- 메가 드롭다운: li hover 시 메뉴바 전체가 내려옴 -->
+  <div class="nav-mega">
+    <ul class="nav-mega-list">
+      <li><a href="#about"><span class="m-t">소개</span><span class="m-d">저를 소개합니다</span></a></li>
+      <li><a href="#education"><span class="m-t">학력</span><span class="m-d">학업 과정</span></a></li>
+      <li><a href="#skills"><span class="m-t">기술</span><span class="m-d">보유 기술 스택</span></a></li>
+      <li><a href="#certifications"><span class="m-t">자격증</span><span class="m-d">취득 자격증</span></a></li>
+      <li><a href="#projects"><span class="m-t">프로젝트</span><span class="m-d">진행한 프로젝트</span></a></li>
+      <li><a href="#experience"><span class="m-t">경력</span><span class="m-d">실무 경험</span></a></li>
+    </ul>
+  </div>
 </nav>
+
+<!-- 메뉴바 외 화면 blur 스크림 -->
+<div class="nav-scrim" id="navScrim"></div>
 
 <div class="mobile-nav" id="mobileNav">
   <a href="#about"          onclick="closeMobileNav()">소개</a>
@@ -1834,6 +1919,22 @@
       nav.style.background = 'rgba(255,255,255,.82)';
     }
   });
+
+  /* ------ 메가 메뉴: li hover → 메뉴바 전체 드롭다운 + 배경 blur ------ */
+  const navScrim = document.getElementById('navScrim');
+  const navLinksUl = document.querySelector('.nav-links');
+  if (nav && navScrim && navLinksUl) {
+    const openMega  = () => { nav.classList.add('is-open'); navScrim.classList.add('is-open'); };
+    const closeMega = () => { nav.classList.remove('is-open'); navScrim.classList.remove('is-open'); };
+    // 메뉴 항목에 진입하면 열림 (mega 패널은 nav 자식이라 nav를 벗어날 때만 닫힘)
+    navLinksUl.addEventListener('mouseenter', openMega);
+    nav.addEventListener('mouseleave', closeMega);
+    // 스크림 클릭 / 링크 클릭 시 닫힘
+    navScrim.addEventListener('click', closeMega);
+    nav.querySelectorAll('.nav-mega-list a, .nav-links a').forEach(a => {
+      a.addEventListener('click', closeMega);
+    });
+  }
 
   /* ------ Smooth active nav link highlight ------ */
   const sections = document.querySelectorAll('section[id]');
