@@ -86,12 +86,10 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      /* 평소엔 투명 → 레이아웃 흔들림 없이 호버 시 색만 입힘 */
-      border-left: 1px solid transparent;
-      border-right: 1px solid transparent;
+      transition: opacity .25s ease;
     }
-    /* 호버한 열만 좌우 회색선 (상단 ↔ 드롭다운 연결) */
-    .nav-links > li.col-on { border-color: rgba(0,0,0,.18); }
+    /* 한 열을 호버하면 나머지 li 는 흐리게, 호버한 li 만 선명 */
+    nav.col-active .nav-links > li:not(.col-on) { opacity: .3; }
 
     .nav-links a {
       display: block;
@@ -138,12 +136,11 @@
       list-style: none;
     }
     .nav-mega-list > li {
-      display: flex;           /* a 가 li 전체 높이를 채워 구분선이 끊기지 않음 */
-      /* 평소엔 투명 → 호버한 열만 색을 입혀 상단 선과 한 줄로 연결 */
-      border-left: 1px solid transparent;
-      border-right: 1px solid transparent;
+      display: flex;           /* a 가 li 전체 높이를 채움 */
+      transition: opacity .25s ease;
     }
-    .nav-mega-list > li.col-on { border-color: rgba(0,0,0,.18); }
+    /* 한 열을 호버하면 나머지 li 는 흐리게, 호버한 li 만 선명 */
+    nav.col-active .nav-mega-list > li:not(.col-on) { opacity: .3; }
     .nav-mega-list a {
       flex: 1;
       display: flex;
@@ -1967,14 +1964,16 @@
   const navScrim = document.getElementById('navScrim');
   const navLinksUl = document.querySelector('.nav-links');
   if (nav && navScrim && navLinksUl) {
-    // 상단 메뉴 li ↔ 드롭다운 li 인덱스 연동 (호버한 열만 좌우 선 연결)
+    // 상단 메뉴 li ↔ 드롭다운 li 인덱스 연동 (호버한 열만 선명, 나머지 흐리게)
     const topItems  = nav.querySelectorAll('.nav-links > li');
     const megaItems = nav.querySelectorAll('.nav-mega-list > li');
     const setCol = (i) => {
+      nav.classList.add('col-active');
       topItems.forEach((li, idx)  => li.classList.toggle('col-on', idx === i));
       megaItems.forEach((li, idx) => li.classList.toggle('col-on', idx === i));
     };
     const clearCol = () => {
+      nav.classList.remove('col-active');
       topItems.forEach(li  => li.classList.remove('col-on'));
       megaItems.forEach(li => li.classList.remove('col-on'));
     };
