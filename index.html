@@ -115,7 +115,6 @@
       background: var(--nav-bg);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-top: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 24px 44px rgba(0,0,0,.10);
       overflow: hidden;
       max-height: 0;
@@ -131,7 +130,7 @@
     .nav-mega-list {
       width: 100%;
       max-width: 980px;
-      margin: 26px auto 34px;  /* 가운데 정렬 (상단 메뉴와 동일 기준) */
+      margin: 0 auto;          /* 위쪽 여백 제거 → 상단 메뉴 선과 끊김 없이 연결 */
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 0;                  /* 열 경계가 상단 메뉴와 정확히 일치 */
@@ -140,16 +139,19 @@
       border-right: 1px solid rgba(0,0,0,.12);
     }
     .nav-mega-list > li {
-      border-right: 1px solid rgba(0,0,0,.10);  /* 열 구분선 */
+      display: flex;           /* a 가 li 전체 높이를 채워 구분선이 끊기지 않음 */
+      border-right: 1px solid rgba(0,0,0,.12);  /* 열 구분선 (상단과 동일 색) */
     }
     .nav-mega-list > li:last-child { border-right: none; }
     .nav-mega-list a {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;     /* 가운데 정렬 */
+      justify-content: center;
       text-align: center;
       gap: 5px;
-      padding: 18px 10px;
+      padding: 30px 10px 38px; /* 여백을 a 내부로 → 구분선은 위에서 아래까지 연속 */
       text-decoration: none;
       transition: background .2s ease, transform .2s ease;
       line-height: 1.3;
