@@ -1420,7 +1420,7 @@
           </div>
           <div class="fact-row">
             <div class="fact-icon"><img src="img/ic-trophy.svg" alt="자격증" width="22" height="22"></div>
-            <span>보유 자격증 5개 · 진행 프로젝트 4개</span>
+            <span>보유 자격증 3개 · 진행 프로젝트 4개</span>
           </div>
         </div>
       </div><!-- /.about-info-panel -->
@@ -1430,7 +1430,7 @@
     <div style="margin-top:60px;">
       <div class="stats-row">
         <div class="stat-item">
-          <div class="stat-num">5+</div>
+          <div class="stat-num">3</div>
           <div class="stat-label">보유 자격증</div>
         </div>
         <div class="stat-item">
@@ -1442,7 +1442,7 @@
           <div class="stat-label">주요 프로젝트</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">21</div>
+          <div class="stat-num">23</div>
           <div class="stat-label">나이</div>
         </div>
       </div>
@@ -1647,26 +1647,6 @@
           수상 인명 구조 능력을 인증하는 자격증입니다.
         </p>
         <p class="cert-year">2024년 취득</p>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><img src="img/ic-car.svg" alt="자동차 면허" width="30" height="30"></div>
-        <h3 class="cert-name">1종 보통 운전면허</h3>
-        <p class="cert-org">경찰청</p>
-        <p style="font-size:13px; color:var(--grey-1); line-height:1.6;">
-          대형 차량을 포함한 1종 보통 자동차 운전 자격입니다.
-        </p>
-        <p class="cert-year">2023년 취득</p>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-icon"><img src="img/ic-motorcycle.svg" alt="오토바이 면허" width="30" height="30"></div>
-        <h3 class="cert-name">2종 소형 운전면허</h3>
-        <p class="cert-org">경찰청</p>
-        <p style="font-size:13px; color:var(--grey-1); line-height:1.6;">
-          오토바이 등 소형 이륜차 운전 자격입니다.
-        </p>
-        <p class="cert-year">2023년 취득</p>
       </div>
 
     </div>
@@ -2029,8 +2009,8 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const nums = entry.target.querySelectorAll('.stat-num');
-        const targets = [5, 6, 2, 21];
-        const suffixes = ['+', '', '+', ''];
+        const targets = [3, 6, 2, 23];
+        const suffixes = ['', '', '+', ''];
         nums.forEach((el, i) => animateCounter(el, targets[i], suffixes[i]));
         statsObserver.unobserve(entry.target);
       }
